@@ -1,7 +1,22 @@
+from re import search
+
 words = []
 n = 0
+
+def censorship():
+    s = input('Введите слово: ')
+    wordsArray = s.split(' ')
+    for i in range(len(wordsArray)):
+        for j in range(len(words)):
+            if search(wordsArray[i].lower(), words[j].lower()):
+                a = len(wordsArray[i])
+                wordsArray[i] = ''
+                for j in range(a):
+                    wordsArray[i] += '*'
+    print(wordsArray)
+    
 while int(n) != 4:
-    n = input('1. Вывести список запрещенных слов\n2. Проверить их\n3. Пополнить список\n 4. Выход\n')
+    n = input('1. Вывести список запрещенных слов\n2. Проверить их\n3. Пополнить список\n4. Выход\n')
     n = int(n)
     if n == 1:
         if len(words) == 0:
@@ -9,16 +24,7 @@ while int(n) != 4:
         else:
             print(words)       
     elif n == 2:
-        s = input('Введите слово: ')
-        for i in range(len(words)):
-            if s in words[i]:
-                a = len(s)
-                s = ''
-                for j in range(a):
-                    s += '*'
-        print(s)
+        censorship()
     elif n == 3:
         s = input('Вводите слова через пробел\n')
         words.extend(s.split(' '))
-
-        
