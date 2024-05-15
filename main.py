@@ -1,5 +1,3 @@
-from re import search
-
 words = []
 n = 0
 
@@ -8,7 +6,7 @@ def censorship():
     wordsArray = s.split(' ')
     for i in range(len(wordsArray)):
         for j in range(len(words)):
-            if search(wordsArray[i].lower(), words[j].lower()):
+            if wordsArray[i].lower() in words[j].lower():
                 a = len(wordsArray[i])
                 wordsArray[i] = ''
                 for j in range(a):
